@@ -139,7 +139,7 @@ export class IncomeComponent implements OnInit {
   }
 
   getPdfReportURL() {
-    window.open(this.incomeService.baseUrl+'pdfreport','_blank','toolbar=0,height=200,width=300');
+    window.open(this.incomeService.baseUrl+'pdfreport','_blank','toolbar=0');
   }
 
 }
