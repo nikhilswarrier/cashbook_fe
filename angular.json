@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "cashbook"
+    }
+  },
+  "defaultProject": "cashbook",
+  "cli": {
+    "analytics": "57b5df5c-a1e4-4311-a219-648c3d6a7228"
+  }
 }

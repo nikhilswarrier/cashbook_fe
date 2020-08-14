@@ -25,8 +25,6 @@ export class IncomeComponent implements OnInit {
   public dataSource = new MatTableDataSource<Income>();
   displayedColumns: string[] = ['id', 'date', 'particulars', 'vrNumber', 'amount', 'update', 'delete'];
 
-  totalAmount: number;
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
@@ -122,7 +120,6 @@ export class IncomeComponent implements OnInit {
         this.router.navigate(['/income']);
       });
     }, timeLapse * 1000);
-    this.totalAmount = this.totalAmount;
   }
 
   noDataFound() {
@@ -134,9 +131,8 @@ export class IncomeComponent implements OnInit {
     });
   }
 
-  findTotal() {
-    this.incomeService.getTotalAmount().subscribe(res => console.log(res));
-    this.refresh(1);
+  public findTotal() {
+    return this.dataSource.data.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
 }
 
