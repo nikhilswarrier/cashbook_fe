@@ -7,6 +7,7 @@
 			<button mat-button (click)="redirectToCreate()"><mat-icon>add_box</mat-icon>Create New Record</button>
 			<button mat-button (click)="refresh(0)"><mat-icon>refresh</mat-icon>Refresh</button>
 	</div>
+<div id="incometable" #incometable>
 	<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 		<ng-container matColumnDef="id">
 			<th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -55,11 +56,12 @@
                 </button>
 			</td>
 			<td mat-footer-cell *matFooterCellDef></td>
-
 		</ng-container>
 		<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
 		<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 		<tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
 	</table>
+</div>
 	<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  	<button mat-button (click)="downloadAsPDF(incometable)"><mat-icon>print</mat-icon>Export</button>
 </div>
