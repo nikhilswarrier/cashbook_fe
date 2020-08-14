@@ -32,4 +32,8 @@ export class IncomeService {
     let body = JSON.stringify(incomeData);
     return this.http.put(this.baseUrl, body, { headers });
   }
+
+  getPdfReport(){
+    return this.http.get(this.baseUrl+'/pdfreport')
+  }
 }

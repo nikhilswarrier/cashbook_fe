@@ -10,9 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { CloseScrollStrategy } from '@angular/cdk/overlay';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
-
+import { from } from 'rxjs';
 
 
 @Component({
@@ -31,7 +29,7 @@ export class IncomeComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
-  @ViewChild('incometable', { static: true }) incometable: ElementRef;
+
 
 
 
@@ -139,15 +137,10 @@ export class IncomeComponent implements OnInit {
   public findTotal() {
     return this.dataSource.data.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
-  downloadAsPDF(divId) {
-    let data = document.getElementById('divId');
-    html2canvas(data).then(canvas => {
-      const contentDataURL = canvas.toDataURL('image/png')
-      let pdf = new jsPDF('l', 'cm', 'a4'); //Generates PDF in landscape mode
-      // let pdf = new jspdf('p', 'cm', 'a4'); Generates PDF in portrait mode
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 29.7, 21.0);
-      pdf.save('Filename.pdf');
-    });
+
+  getPdfReportURL() {
+    window.open(this.incomeService.baseUrl+'pdfreport','_blank','toolbar=0,height=200,width=300');
   }
+
 }
 

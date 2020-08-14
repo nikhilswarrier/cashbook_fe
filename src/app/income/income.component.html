@@ -1,5 +1,4 @@
 <div>
-
 	<div fxLayout fxLayoutAlign="center center">
 		<mat-form-field fxFlex="40%">
 			<input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
@@ -63,5 +62,5 @@
 	</table>
 </div>
 	<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-  	<button mat-button (click)="downloadAsPDF(incometable)"><mat-icon>print</mat-icon>Export</button>
+  	<button mat-button (click)="getPdfReportURL()"><mat-icon>print</mat-icon>Export</button>
 </div>
