@@ -9,6 +9,9 @@ th.mat-header-cell {
     text-align: left;
     max-width: 300px;
 }
+tr.mat-footer-row {
+  font-weight: bolder;
+}
 
 ::ng-deep .red-snackbar {
     background-color: #c4302b;

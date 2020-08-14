@@ -23,7 +23,7 @@ export class ExpenditureComponent implements OnInit {
   error: any;
   headers: string[];
   public dataSource = new MatTableDataSource<Expenditure>();
-  displayedColumns: string[] = ['id', 'date', 'particulars', 'vrNumber', 'amountAdjustment', 'amountAnt', 'update', 'delete'];
+  displayedColumns: string[] = ['id', 'date', 'particulars', 'vrNumber', 'amount', 'update', 'delete'];
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -76,7 +76,7 @@ export class ExpenditureComponent implements OnInit {
 
   public redirectToCreate = () => {
 
-    const res: Expenditure = { id: 0, date: new Date("2020-04-02"), particulars: "", vrNumber: 0, amountAdjustment: 0, amountAnt: 0 };
+    const res: Expenditure = { id: 0, date: new Date("2020-04-02"), particulars: "", vrNumber: 0, amount: 0 };
     const dialogRef = this.dialog.open(UpdateDialogComponent, {
       width: '300px',
       data: res as Expenditure
@@ -95,12 +95,12 @@ export class ExpenditureComponent implements OnInit {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
-    this.refresh();
+    this.refresh(5);
   }
 
   public deleteById(id: number) {
     this.expenditureService.deleteExpenditureById(id).subscribe(res => console.log(res));
-    this.refresh();
+    this.refresh(5);
   }
 
   public updateById(expenditureData: Expenditure) {
@@ -110,17 +110,16 @@ export class ExpenditureComponent implements OnInit {
       horizontalPosition: 'right',
       verticalPosition: 'top',
     });
-    this.refresh();
+    this.refresh(5);
   }
 
-  public refresh() {
+  public refresh(timeLapse: number) {
     setTimeout(() => {
       console.log('sleep');
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
         this.router.navigate(['/expenditure']);
       });
-    }, 5000);
-
+    }, timeLapse * 1000);
   }
 
   noDataFound() {
@@ -131,7 +130,8 @@ export class ExpenditureComponent implements OnInit {
       panelClass: ['red-snackbar'],
     });
   }
-
-
+  public findTotal() {
+    return this.dataSource.data.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+  }
 }
 

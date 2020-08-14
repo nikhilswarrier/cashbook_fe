@@ -9,8 +9,10 @@ const headers = new HttpHeaders({
 
 @Injectable()
 export class ExpenditureService {
+
+  baseUrl='https://8080-aeac2e78-de33-4e8b-8a46-6b753e435163.ws-us02.gitpod.io/expense';
   //baseUrl = 'http://192.168.1.8:8080/expenditure/';
-  baseUrl = 'http://my-json-server.typicode.com/0x006E/Json-Test/expenditure/';
+  //baseUrl = 'http://my-json-server.typicode.com/0x006E/Json-Test/expenditure/';
 
   constructor(private http: HttpClient) { }
 

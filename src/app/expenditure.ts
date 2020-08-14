@@ -3,6 +3,5 @@ export interface Expenditure {
     date: Date;
     particulars: string;
     vrNumber: number;
-    amountAdjustment: number;
-    amountAnt: number;
+    amount: number;
 }
