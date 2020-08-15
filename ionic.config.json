@@ -1,0 +1,8 @@
+{
+  "name": "cashbook_fe",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}
