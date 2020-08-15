@@ -117,7 +117,7 @@ export class ExpenditureComponent implements OnInit {
     setTimeout(() => {
       console.log('sleep');
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-        this.router.navigate(['/expenditure']);
+        this.router.navigate(['/expense']);
       });
     }, timeLapse * 1000);
   }

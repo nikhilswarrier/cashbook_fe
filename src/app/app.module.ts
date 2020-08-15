@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatTooltipModule} from '@angular/material/tooltip';
 import { IncomeComponent } from './income/income.component';
 import { ExpenditureComponent } from './expenditure/expenditure.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -56,7 +57,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
     FormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatGridListModule
+    MatGridListModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

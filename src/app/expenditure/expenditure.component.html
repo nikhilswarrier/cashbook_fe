@@ -1,12 +1,15 @@
+<h1 style="text-align:center; font-family=Times">Expenditure</h1>
 <div>
-
 	<div fxLayout fxLayoutAlign="center center">
 		<mat-form-field fxFlex="40%">
 			<input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
-			<button mat-button (click)="redirectToCreate()"><mat-icon>add_box</mat-icon></button>
-			<button mat-button (click)="refresh(0)"><mat-icon>refresh</mat-icon></button>
-			<button mat-button (click)="getPdfReportURL()"><mat-icon>print</mat-icon></button>
+			<button matTooltip="Create new Record"
+        aria-label="tooltip for create" mat-button (click)="redirectToCreate()"><mat-icon>add_box</mat-icon></button>
+			<button matTooltip="Refresh"
+        aria-label="tooltip for Refresh" mat-button (click)="refresh(0)"><mat-icon>refresh</mat-icon></button>
+			<button matTooltip="Export as PDF"
+        aria-label="tooltip for export" mat-button (click)="getPdfReportURL()"><mat-icon>print</mat-icon></button>
 	</div>
 
 
