@@ -129,9 +129,15 @@ export class ExpenditureComponent implements OnInit {
       verticalPosition: 'top',
       panelClass: ['red-snackbar'],
     });
+
+
   }
   public findTotal() {
     return this.dataSource.data.map(t => t.amount).reduce((acc, value) => acc + value, 0);
+  }
+
+  getPdfReportURL() {
+    window.open(this.expenditureService.baseUrl+'pdfreport','_blank','toolbar=0');
   }
 }
 
