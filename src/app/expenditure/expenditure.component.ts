@@ -101,6 +101,7 @@ export class ExpenditureComponent implements OnInit {
   public deleteById(id: number) {
     this.expenditureService.deleteExpenditureById(id).subscribe(res => console.log(res));
     this.refresh(5);
+
   }
 
   public updateById(expenditureData: Expenditure) {
@@ -114,6 +115,7 @@ export class ExpenditureComponent implements OnInit {
   }
 
   public refresh(timeLapse: number) {
+    console.log(this.findTotal());
     setTimeout(() => {
       console.log('sleep');
       this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
@@ -139,5 +141,7 @@ export class ExpenditureComponent implements OnInit {
   getPdfReportURL() {
     window.open(this.expenditureService.baseUrl+'pdfreport','_blank','toolbar=0');
   }
+
 }
+
 

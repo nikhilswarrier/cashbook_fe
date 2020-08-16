@@ -12,15 +12,16 @@
         <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
     </mat-form-field>
+
     <p>Particulars: </p>
     <mat-form-field>
         <mat-label>Particulars</mat-label>
         <input matInput [(ngModel)]="data.particulars">
     </mat-form-field>
+
     <p>Voucher Number: </p>
     <mat-form-field>
-        <mat-label>Voucher Number</mat-label>
-        <input matInput [(ngModel)]="data.vrNumber">
+        <input matInput [(ngModel)]="data.vrNumber" >
     </mat-form-field>
 
     <p>Amount : </p>
@@ -29,7 +30,7 @@
         <input matInput [(ngModel)]="data.amount">
     </mat-form-field>
 </div>
-<div mat-dialog-actions style="display: block;margin-left: auto;margin-right: auto;" align="center">
+<div mat-dialog-actions style="display: block;margin-left: auto;margin-right: auto;align=center">
     <button mat-button mat-dialog-close>Cancel</button>
     <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Save</button>
 </div>

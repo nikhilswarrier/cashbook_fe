@@ -4,5 +4,8 @@ export interface Income {
     particulars: string;
     vrNumber: number;
     amount: number;
+    totalAmount:number;
+    cumulativeBalance:number;
+    openingBalance:number;
 }
 

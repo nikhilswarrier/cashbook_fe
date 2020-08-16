@@ -25,14 +25,9 @@ export class IncomeComponent implements OnInit {
   headers: string[];
   public dataSource = new MatTableDataSource<Income>();
   displayedColumns: string[] = ['id', 'date', 'particulars', 'vrNumber', 'amount', 'update', 'delete'];
-
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatTable) table: MatTable<any>;
-
-
-
-
   constructor(private incomeService: IncomeService,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
@@ -79,7 +74,7 @@ export class IncomeComponent implements OnInit {
 
   public redirectToCreate = () => {
 
-    const res: Income = { id: 0, date: new Date("2020-04-02"), particulars: "", vrNumber: 0, amount: 0 };
+    const res: Income = { id: 0, date: new Date("2020-04-02"), particulars: "", vrNumber: 0, amount: 0, totalAmount: 0, cumulativeBalance: 0, openingBalance: 0 };
     const dialogRef = this.dialog.open(UpdateDialogComponent, {
       width: '300px',
       data: res as Income
@@ -138,8 +133,12 @@ export class IncomeComponent implements OnInit {
     return this.dataSource.data.map(t => t.amount).reduce((acc, value) => acc + value, 0);
   }
 
+
+  public cumulative() {
+    return this.dataSource.data[0].cumulativeBalance;
+  }
   getPdfReportURL() {
-    window.open(this.incomeService.baseUrl+'pdfreport','_blank','toolbar=0');
+    window.open(this.incomeService.baseUrl + 'pdfreport', '_blank', 'toolbar=0');
   }
 
 }
